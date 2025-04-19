@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  trident-product-service
+  name: trident-product-service
   labels:
-    name:  trident-k8s
+    name: trident-k8s
 spec:
   selector:
     matchLabels:
-      app: trident-k8s
+      app: tridentk8s
   replicas: 2
   strategy:
     rollingUpdate:
@@ -17,37 +17,37 @@ spec:
   template:
     metadata:
       labels:
-        name:  trident-k8s
+        name: tridentk8s
     spec:
       containers:
-      - image:  gkgarry911/trident-product-service:0.0.1
-        name:  gkgarry911/trident-product-service
-        ports:
-        - containerPort:  4001
-        restartPolicy: Always
-        imagePullPolicy: Always
-        resources:
-          requests:
-            cpu: "20m"
-            memory: "55M"
-        # livenessProbe:
-        #   httpGet:
-        #     path: /_status/healthz
-        #     port: 5000
-        #   initialDelaySeconds: 90
-        #   timeoutSeconds: 10
-        # readinessProbe:
-        #   httpGet:
-        #     path: /_status/healthz
-        #     port: 5000
-        #   initialDelaySeconds: 30
-        #   timeoutSeconds: 10
-        # env:
-        # - name:  ENVVARNAME
-        #   value:  ENVVARVALUE       
-        # volumeMounts:
-        # - mountPath: /data
-        #   name: data
-      # volumes:
-      #   - name: data
-      #     emptyDir: {}
+        - image: gkgarry911/trident-product-service:0.0.1
+          name: gkgarry911/trident-product-service
+          ports:
+          - containerPort: 4001
+          restartPolicy: Always
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "20m"
+              memory: "55M"
+          # livenessProbe:
+          #   httpGet:
+          #     path: /_status/healthz
+          #     port: 5000
+          #   initialDelaySeconds: 90
+          #   timeoutSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /_status/healthz
+          #     port: 5000
+          #   initialDelaySeconds: 30
+          #   timeoutSeconds: 10
+          # env:
+          # - name:  ENVVARNAME
+          #   value:  ENVVARVALUE       
+          # volumeMounts:
+          # - mountPath: /data
+          #   name: data
+        # volumes:
+        #   - name: data
+        #     emptyDir: {}
