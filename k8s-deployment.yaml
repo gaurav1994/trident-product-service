@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: trident-product-service
   labels:
-    name: trident
+    app: trident
 spec:
   selector:
     matchLabels:
@@ -17,11 +17,11 @@ spec:
   template:
     metadata:
       labels:
-        name: trident
+        app: trident
     spec:
       containers:
         - image: gkgarry911/trident-product-service:0.0.1
-          name: trident-product-service
+          name: tridentProductService
           ports:
           - containerPort: 4001
           restartPolicy: Always
