@@ -1,10 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name:  trident-product-service
   labels:
-    name:  trident
+    name:  trident-k8s
 spec:
+  selector:
+    matchLabels:
+      app: trident-k8s
+  replicas: 2
   strategy:
     rollingUpdate:
       maxSurge: 10
@@ -13,11 +17,15 @@ spec:
   template:
     metadata:
       labels:
-        name:  trident
+        name:  trident-k8s
     spec:
       containers:
       - image:  gkgarry911/trident-product-service:0.0.1
         name:  gkgarry911/trident-product-service
+        ports:
+        - containerPort:  4001
+        restartPolicy: Always
+        imagePullPolicy: Always
         resources:
           requests:
             cpu: "20m"
@@ -37,13 +45,9 @@ spec:
         # env:
         # - name:  ENVVARNAME
         #   value:  ENVVARVALUE       
-        ports:
-        - containerPort:  4001
-        volumeMounts:
-        - mountPath: /data
-          name: data
-      volumes:
-        - name: data
-          emptyDir: {}
-      restartPolicy: Always
-      imagePullPolicy: Always
+        # volumeMounts:
+        # - mountPath: /data
+        #   name: data
+      # volumes:
+      #   - name: data
+      #     emptyDir: {}
