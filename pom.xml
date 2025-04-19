@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.trident</groupId>
 	<artifactId>trident-product-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>trident-product-service</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -89,6 +89,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>trident-product-service_${version}</finalName>
 	</build>
 
 </project>
