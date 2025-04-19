@@ -19,6 +19,7 @@ public class ProductServiceImpl implements ProductService {
         products.add(Product.builder().id(3).name("product3").price(50d).quantity(20).build());
         products.add(Product.builder().id(4).name("product4").price(50d).quantity(3).build());
         products.add(Product.builder().id(5).name("product5").price(70d).quantity(14).build());
+        products.add(Product.builder().id(6).name("product6").price(10d).quantity(4).build());
     }
 
 
