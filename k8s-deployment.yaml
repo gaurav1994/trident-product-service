@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: trident-product-service
+  name: trident-product-deployment
   labels:
     app: trident
 spec:
@@ -51,3 +51,18 @@ spec:
         # volumes:
         #   - name: data
         #     emptyDir: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: trident-product-service
+spec:
+  selector:
+    app: trident
+  type: NodePort
+  ports:
+    - protocol: "TCP"
+      port: 4001
+      targetPort: 4001
